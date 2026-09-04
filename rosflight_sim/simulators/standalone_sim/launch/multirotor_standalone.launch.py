@@ -27,11 +27,12 @@ def evaluate_namespace_arg(context, *args, **kwargs):
     # Now you can use 'arg_value_string' as a normal Python string
     #print(f"The evaluated argument value is: {namespace_string}")
 
-    aircraft_body="aircraft_body"
-    stl_frame="stl_frame"
-    if (namespace_string != ''):
-        aircraft_body=f"/{namespace_string}/aircraft_body"
-        stl_frame=f"/{namespace_string}/stl_frame"
+    aircraft_body = "aircraft_body"
+    stl_frame = "stl_frame"
+    ns = namespace_string.strip('/')
+    if ns:
+        aircraft_body = f"/{ns}/aircraft_body"
+        stl_frame = f"/{ns}/stl_frame"
     
     # You must return a list of launch actions (or None)
     return [
